@@ -4,14 +4,14 @@
 
 class Cafe {
 public:
-    Cafe() = default;
+    Cafe();
     Cafe(double cafePrice, double cafeLocation);
 
     void SetPrice(double cafePrice);
-    void SetPlace(double cafeLocation);
+    void SetLocation(double cafeLocation);
 
     double GetPrice() const;
-    double GetPlace() const;
+    double GetLocation() const;
     double GetProfit() const;
     int GetCustomerCount() const;
 

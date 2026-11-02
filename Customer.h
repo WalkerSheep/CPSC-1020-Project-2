@@ -6,11 +6,11 @@
 
 class Customer {
 public:
-    Customer() = default;
+    Customer();
     Customer(double customerLocation);
-    Customer(const Customer& other) = default;
-    Customer& operator=(const Customer& other) = default;
-    ~Customer() = default;
+    Customer(const Customer& customer);
+    Customer& operator=(const Customer& customer);
+    ~Customer();
 
     void SetLocation(double customerLocation);
     double GetLocation() const;
