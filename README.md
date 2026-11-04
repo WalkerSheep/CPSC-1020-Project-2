@@ -18,5 +18,5 @@ A C++ simulation of two coffee companies competing along a 10 km beach. Customer
 
 - [x] Walker Allen — Cafe and Customer classes
 - [ ] Evan Johnston — Testing code
-- [ ] Eric Nguyen — Makefile
+- [x] Eric Nguyen — Makefile
 - [ ] Compile and test the project
