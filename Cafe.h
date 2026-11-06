@@ -27,7 +27,6 @@ private:
 
 #endif
 
-    
 cout << "Customer Count: " << CafeOne.GetCustomerCount() << endl << CafeOne.GetProfit() ;
 
-return 0; }
+return 0;

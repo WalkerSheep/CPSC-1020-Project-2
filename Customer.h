@@ -21,7 +21,7 @@ public:
 
 private:
     double location = 0.0;
-    Cafe* visitedCafe = nullptr; // Does not own or delete the cafe
+    Cafe* visitedCafe = nullptr;
 };
 
 #endif
