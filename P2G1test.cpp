@@ -1,3 +1,4 @@
+
 // Group 1: Eric Nguyen, Walker Allen, Evan Johnston
 #include "Cafe.h"
 #include "Customer.h"
@@ -9,29 +10,33 @@ using namespace std;
 
 int main() {
 
-double Location;
-double Price;
+double customerLocation;
 
 //Enter Value for Customer
 cout << "Enter a Customer location between 0 and 10 inclusive: ";
-cin >> Location;
+cin >> customerLocation;
 //Verify user is inputing valid location
-while (Location < 0 || Location > 10) {
+while (customerLocation < 0 || customerLocation > 10) {
     cout << "Invalid Placement, please enter a number between 0 and 10 inclusive. \n";
-    cin >> Location;
+    cin >> customerLocation;
 }
 //Runs and prints Location Value
-Customer CustomerOne(Location); 
-cout << fixed << setprecision(2) << CustomerOne.GetLocation() << endl;
+Customer CustomerOne(customerLocation); 
+cout << "Location of Customer: " << fixed << setprecision(2) << CustomerOne.GetLocation() << endl;
 
-cout << "Enter the Cafe Price and Cafe Location";
 
-Cafe CafeOne();
+//Cafe test values
+double cafePrice;
+double cafeLocation;
 
-//Output starting values of customer
+//Recieves input from user for cafePrice and cafeLocation
+cout << "Enter the Cafe Price and Cafe Location: ";
 
-//Output starting values of Cafe
-//cout << CafeOne.GetPrice() << CafeOne.GetLocation() << CafeOne.GetPrice() << CafeOne.GetProfit() << CafeOne.GetCustomerCount();
+
+cin >> cafePrice >> cafeLocation;
+
+Cafe CafeOne(cafeLocation, cafePrice);
+cout << "Cafe Location" << CafeOne.GetLocation << endl << "Price: " << CafeOne.GetPrice;
 
 return 0;
 }
