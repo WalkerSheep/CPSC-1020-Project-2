@@ -1,4 +1,3 @@
-
 // Group 1: Eric Nguyen, Walker Allen, Evan Johnston
 #include "Cafe.h"
 #include "Customer.h"
@@ -35,8 +34,19 @@ cout << "Enter the Cafe Price and Cafe Location: ";
 
 cin >> cafePrice >> cafeLocation;
 
-Cafe CafeOne(cafeLocation, cafePrice);
-cout << "Cafe Location" << CafeOne.GetLocation << endl << "Price: " << CafeOne.GetPrice;
+Cafe CafeOne(cafePrice, cafeLocation);
+cout << "Price: " << CafeOne.GetPrice() << endl << "Cafe Location: " << CafeOne.GetLocation() << endl;
 
-return 0;
+//variables used for testing servecustomer function
+int s;
+int i;
+i = 0;
+
+cout << "How many times would you like to execute the ServeCustomer function: " << endl;
+cin >> s; 
+
+while (i < s) {
+
+    CafeOne.ServeCustomer();
+    i++;
 }
