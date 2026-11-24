@@ -23,38 +23,39 @@ Customer::Customer(double customerLocation)
 Customer::Customer(const Customer& customer)
 {
     location = customer.location; // Copies the other customer's location
-    visitedCafe = customer.visitedCafe; // Sets visitedCafe to the other customer's visitedCafe
+    visitedCafe = nullptr;
+
+    if (customer.visitedCafe != nullptr)
+    {
+        visitedCafe = new Cafe(*customer.visitedCafe);
+    }
 }
 
 // Overrides the = operator so that one customer can become another
 Customer& Customer::operator=(const Customer& customer)
 {
-    if(this != &customer) // Make sure that this (Customer) script is not the passed customer
+    if (this != &customer)
     {
-        location = customer.location; // Copies the other customer's location
-        visitedCafe = customer.visitedCafe; // Sets visitedCafe to the other customer's visitedCafe
+        Cafe* newCafe = nullptr;
+
+        if (customer.visitedCafe != nullptr)
+        {
+            newCafe = new Cafe(*customer.visitedCafe);
+        }
+
+        delete visitedCafe;
+
+        location = customer.location;
+        visitedCafe = newCafe;
     }
-    return *this; // Return the updated customer
+
+    return *this;
 }
 
-// Destructor (Does nothing lol)
+// Destructor
 Customer::~Customer()
 {
-    /*
-⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⢻⣿⡗⢶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣄
-⠀⢻⣇⠀⠈⠙⠳⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠶⠛⠋⣹⣿⡿
-⠀⠀⠹⣆⠀⠀⠀⠀⠙⢷⣄⣀⣀⣀⣤⣤⣤⣄⣀⣴⠞⠋⠉⠀⠀⠀⢀⣿⡟⠁
-⠀⠀⠀⠙⢷⡀⠀⠀⠀⠀⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠋⠀⠀
-⠀⠀⠀⠀⠈⠻⡶⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣠⡾⠋⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣼⠃⠀⢠⠒⣆⠀⠀⠀⠀⠀⠀⢠⢲⣄⠀⠀⠀⢻⣆⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⢰⡏⠀⠀⠈⠛⠋⠀⢀⣀⡀⠀⠀⠘⠛⠃⠀⠀⠀⠈⣿⡀⠀⠀⠀⠀
-⠀⠀⠀⠀⣾⡟⠛⢳⠀⠀⠀⠀⠀⣉⣀⠀⠀⠀⠀⣰⢛⠙⣶⠀⢹⣇⠀⠀⠀⠀
-⠀⠀⠀⠀⢿⡗⠛⠋⠀⠀⠀⠀⣾⠋⠀⢱⠀⠀⠀⠘⠲⠗⠋⠀⠈⣿⠀⠀⠀⠀
-⠀⠀⠀⠀⠘⢷⡀⠀⠀⠀⠀⠀⠈⠓⠒⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡇⠀⠀⠀
-⠀⠀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣧⠀⠀⠀
-⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⠀⠀⠀
-    */
+   delete visitedCafe;
 }
 
 // Sets the location
@@ -72,7 +73,15 @@ double Customer::GetLocation() const
 // Sets the visited cafe
 void Customer::SetVisitedCafe(Cafe* cafe)
 {
-    visitedCafe = cafe;
+    Cafe* newCafe = nullptr;
+
+    if (cafe != nullptr)
+    {
+        newCafe = new Cafe(*cafe);
+    }
+
+    delete visitedCafe;
+    visitedCafe = newCafe;
 }
 
 // Returns the visited cafe
